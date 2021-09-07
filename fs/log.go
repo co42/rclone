@@ -185,7 +185,7 @@ func Errorf(o interface{}, text string, args ...interface{}) {
 // important things the user should see.  The user can filter these
 // out with the -q flag.
 func Logf(o interface{}, text string, args ...interface{}) {
-	if GetConfig(context.TODO()).LogLevel >= LogLevelNotice {
+	if false && GetConfig(context.TODO()).LogLevel >= LogLevelNotice {
 		LogPrintf(LogLevelNotice, o, text, args...)
 	}
 }

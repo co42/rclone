@@ -2169,14 +2169,11 @@ func skipDestructiveChoose(ctx context.Context, subject interface{}, action stri
 // Together they should make sense in this sentence: "Rclone is about
 // to action subject".
 func SkipDestructive(ctx context.Context, subject interface{}, action string) (skip bool) {
-	var flag string
 	ci := fs.GetConfig(ctx)
 	switch {
 	case ci.DryRun:
-		flag = "--dry-run"
 		skip = true
 	case ci.Interactive:
-		flag = "--interactive"
 		interactiveMu.Lock()
 		defer interactiveMu.Unlock()
 		var found bool
@@ -2193,9 +2190,9 @@ func SkipDestructive(ctx context.Context, subject interface{}, action string) (s
 			size = do.Size()
 		}
 		if size >= 0 {
-			fs.Logf(subject, "Skipped %s as %s is set (size %v)", fs.LogValue("skipped", action), flag, fs.LogValue("size", fs.SizeSuffix(size)))
+			//fs.Logf(subject, "Skipped %s as %s is set (size %v)", fs.LogValue("skipped", action), flag, fs.LogValue("size", fs.SizeSuffix(size)))
 		} else {
-			fs.Logf(subject, "Skipped %s as %s is set", fs.LogValue("skipped", action), flag)
+			//fs.Logf(subject, "Skipped %s as %s is set", fs.LogValue("skipped", action), flag)
 		}
 	}
 	return skip

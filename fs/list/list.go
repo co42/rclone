@@ -76,13 +76,13 @@ func filterAndSortDir(ctx context.Context, entries fs.DirEntries, includeAll boo
 			// ignore
 		case !strings.HasPrefix(remote, prefix):
 			ok = false
-			fs.Errorf(entry, "Entry doesn't belong in directory %q (too short) - ignoring", dir)
+			//fs.Errorf(entry, "Entry doesn't belong in directory %q (too short) - ignoring", dir)
 		case remote == prefix:
 			ok = false
-			fs.Errorf(entry, "Entry doesn't belong in directory %q (same as directory) - ignoring", dir)
+			//fs.Errorf(entry, "Entry doesn't belong in directory %q (same as directory) - ignoring", dir)
 		case strings.ContainsRune(remote[len(prefix):], '/'):
 			ok = false
-			fs.Errorf(entry, "Entry doesn't belong in directory %q (contains subdir) - ignoring", dir)
+			//fs.Errorf(entry, "Entry doesn't belong in directory %q (contains subdir) - ignoring", dir)
 		default:
 			// ok
 		}
